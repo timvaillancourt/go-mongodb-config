@@ -1,4 +1,4 @@
-package mongodb_config
+package go-mongodb-config
 
 type SystemLogComponent struct {
 	Verbosity	int	`yaml:"verbosity,omitempty"`
