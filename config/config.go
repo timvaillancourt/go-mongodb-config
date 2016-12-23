@@ -3,7 +3,6 @@ package config
 import(
 	"io/ioutil"
 
-	"github.com/golang/glog"
 	"gopkg.in/yaml.v2"
 )
 
@@ -70,26 +69,19 @@ func New() *Config {
 }
 
 func Load(filePath string) (*Config, error) {
+	config := &Config{}
 	raw, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		glog.Fatal("Error reading mongodb config: ", err.Error())
+		return config, err
 	}
-	config := &Config{}
 	err = yaml.Unmarshal(raw, config)
-	if err != nil {
-		glog.Fatal("Error parsing mongodb config: ", err.Error())
-	}
 	return config, err
 }
 
 func (config *Config) Write(filePath string) error {
 	yaml, err := yaml.Marshal(config)
 	if err != nil {
-		glog.Fatal("Error marshalling mongodb yaml config: ", err.Error())
+		return err
 	}
-	err = ioutil.WriteFile(filePath, yaml, 0644)
-	if err != nil {
-		glog.Fatal("Error writing mongodb config: ", err.Error())
-	}
-	return err
+	return ioutil.WriteFile(filePath, yaml, 0644)
 }
