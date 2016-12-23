@@ -1,4 +1,4 @@
-package go-mongodb-config
+package config
 
 import(
 	"io/ioutil"

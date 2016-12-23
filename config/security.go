@@ -1,4 +1,4 @@
-package go-mongodb-config
+package config
 
 // https://docs.mongodb.com/manual/reference/configuration-options/#security-sasl-options
 //type SecuritySasl struct {
