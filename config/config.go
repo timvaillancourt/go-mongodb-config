@@ -2,6 +2,7 @@ package config
 
 import (
 	"io/ioutil"
+	"net/http"
 
 	"gopkg.in/yaml.v2"
 )
@@ -75,6 +76,23 @@ func Load(filePath string) (*Config, error) {
 		return config, err
 	}
 	err = yaml.Unmarshal(raw, config)
+	return config, err
+}
+
+func LoadUri(httpUri string) (*Config, error) {
+	resp, err := http.Get(httpUri)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	buf, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	config := &Config{}
+	err = yaml.Unmarshal(buf, config)
 	return config, err
 }
 
