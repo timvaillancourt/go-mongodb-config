@@ -49,3 +49,6 @@ func main() {
 	}
 }
 ```
+
+## Docs
+[github.com/timvaillancourt/go-mongodb-config/config](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/config)
