@@ -3,6 +3,9 @@
 
 A package for reading/writing MongoDB yaml-based configurations
 
+## Docs
+- [github.com/timvaillancourt/go-mongodb-config/config](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/config)
+
 ## Usage
 Create 'Config' struct from file (YAML-based only):
 ```
@@ -49,6 +52,3 @@ func main() {
 	}
 }
 ```
-
-## Docs
-[github.com/timvaillancourt/go-mongodb-config/config](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/config)
