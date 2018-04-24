@@ -10,6 +10,6 @@ func TestSystemLog(t *testing.T) {
 	if s.Destination != "file" {
 		t.Errorf("'systemLog.destination' is %s, not file", s.Destination)
 	} else if s.LogAppend != true {
-		t.Errorf("'systemLog.logAppend' is %s not true", s.LogAppend)
+		t.Error("'systemLog.logAppend' is not true")
 	}
 }
