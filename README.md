@@ -1,4 +1,5 @@
 # go-mongodb-config
+[![Build Status](https://travis-ci.org/timvaillancourt/go-mongodb-config.svg?branch=master)](https://travis-ci.org/timvaillancourt/go-mongodb-config)
 [![Go Report Card](https://goreportcard.com/badge/github.com/timvaillancourt/go-mongodb-config)](https://goreportcard.com/report/github.com/timvaillancourt/go-mongodb-config)
 
 A package for reading/writing MongoDB yaml-based configurations
