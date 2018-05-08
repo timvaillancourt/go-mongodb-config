@@ -2,14 +2,12 @@ package config
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSecurity(t *testing.T) {
 	c := loadConfig(t)
-	s := c.Security
-	if s.KeyFile != "/etc/mongod.key" {
-		t.Errorf("'security.keyFile' is %s, not /etc/mongod.key", s.KeyFile)
-	} else if s.Authorization != "enabled" {
-		t.Errorf("'security.authorization' is not enabled")
-	}
+	assert.Equal(t, "/etc/mongod.key", c.Security.KeyFile, "'security.keyFile' is not /etc/mongod.key")
+	assert.Equal(t, "enabled", c.Security.Authorization, "'security.authorization' is not enabled")
 }
