@@ -2,6 +2,7 @@ package config
 
 import (
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"runtime"
 	"testing"
@@ -64,9 +65,27 @@ func TestLoadConfig(t *testing.T) {
 }
 
 func TestLoadUri(t *testing.T) {
+	_, err := LoadUri("https://thisshouldfail:90000")
+	assert.Error(t, err, "config.LoadUri() should fail due to bad uri")
+
 	config, err := LoadUri(testLoadUri)
 	assert.NoError(t, err, "Error running config.LoadUri()")
 	assert.NotNil(t, config, "config.LoadUri() returned nil")
+	assert.NotNil(t, config.Storage, "'storage' is nil")
+	assert.Equal(t, "/dev/null", config.Storage.DbPath, "'storage.dbPath' is not /dev/null")
+}
+
+func TestWrite(t *testing.T) {
+	config := loadConfig(t)
+	assert.NotNil(t, config, "cannot load test config")
+
+	testFile := "/tmp/go-mongodb-config.test.yaml"
+	assert.NoError(t, config.Write(testFile), "config.Write() got error")
+	defer os.Remove(testFile)
+
+	config, err := Load(testFile)
+	assert.NoError(t, err, "Error running config.Load()")
+	assert.NotNil(t, config, "config.Load() returned nil")
 	assert.NotNil(t, config.Storage, "'storage' is nil")
 	assert.Equal(t, "/dev/null", config.Storage.DbPath, "'storage.dbPath' is not /dev/null")
 }
