@@ -10,6 +10,8 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+var testLoadUri = "https://raw.githubusercontent.com/timvaillancourt/go-mongodb-config/master/config/mongod.conf"
+
 func testConfigFile() string {
 	_, filename, _, ok := runtime.Caller(0)
 	if ok {
@@ -32,6 +34,10 @@ func loadConfig(t *testing.T) *Config {
 	return c
 }
 
+func TestNewConfig(t *testing.T) {
+	assert.Equal(t, &Config{}, New(), "config.New() did not return a &Config{} struct")
+}
+
 func TestConfig(t *testing.T) {
 	c := loadConfig(t)
 	if c == nil {
@@ -48,8 +54,19 @@ func TestConfig(t *testing.T) {
 }
 
 func TestLoadConfig(t *testing.T) {
+	_, err := Load("/does/not/exist")
+	assert.Error(t, err, "config.Load() should return an error for paths that do not exist")
+
 	config, err := Load(testConfigFile())
 	assert.NoError(t, err, "Error running config.Load()")
 	compareConfig := loadConfig(t)
 	assert.Equal(t, compareConfig, config, "Test and config.Load() output differ")
+}
+
+func TestLoadUri(t *testing.T) {
+	config, err := LoadUri(testLoadUri)
+	assert.NoError(t, err, "Error running config.LoadUri()")
+	assert.NotNil(t, config, "config.LoadUri() returned nil")
+	assert.NotNil(t, config.Storage, "'storage' is nil")
+	assert.Equal(t, "/dev/null", config.Storage.DbPath, "'storage.dbPath' is not /dev/null")
 }
