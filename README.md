@@ -10,7 +10,7 @@ A package for reading/writing MongoDB yaml-based configurations
 - [github.com/timvaillancourt/go-mongodb-config/config](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/config)
 - [github.com/timvaillancourt/go-mongodb-config/cmdlineopts](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/cmdlineopts)
 
-## github.com/timvaillancourt/go-mongodb-config/config
+## config
 
 ### Usage
 Create 'Config' struct from file (YAML-based only):
@@ -59,7 +59,7 @@ func main() {
 }
 ```
 
-## github.com/timvaillancourt/go-mongodb-config/cmdlineopts
+## cmdlineopts
 
 ### Usage
 *Note: usage examples/info coming soon*
