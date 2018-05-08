@@ -96,6 +96,14 @@ func LoadUri(httpUri string) (*Config, error) {
 	return config, err
 }
 
+func (config *Config) String() string {
+	yaml, err := yaml.Marshal(config)
+	if err != nil {
+		return ""
+	}
+	return string(yaml)
+}
+
 func (config *Config) Write(filePath string) error {
 	yaml, err := yaml.Marshal(config)
 	if err != nil {
