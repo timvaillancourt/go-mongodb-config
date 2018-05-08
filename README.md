@@ -8,8 +8,11 @@ A package for reading/writing MongoDB yaml-based configurations
 
 ## Docs
 - [github.com/timvaillancourt/go-mongodb-config/config](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/config)
+- [github.com/timvaillancourt/go-mongodb-config/cmdlineopts](https://godoc.org/github.com/timvaillancourt/go-mongodb-config/cmdlineopts)
 
-## Usage
+## config
+
+### Usage
 Create 'Config' struct from file (YAML-based only):
 ```
 import (
@@ -55,3 +58,8 @@ func main() {
 	}
 }
 ```
+
+## cmdlineopts
+
+### Usage
+*Note: usage examples/info coming soon*
