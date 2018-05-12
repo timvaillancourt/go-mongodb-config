@@ -48,7 +48,7 @@ type Replication struct {
 	EnableMajorityReadConcern bool   `yaml:"enableMajorityReadConcern,omitempty" json:"enableMajorityReadConcern,omitempty" bson:"enableMajorityReadConcern,omitempty"`
 	LocalPingThresholdMs      int    `yaml:"localPingThresholdMs,omitempty" json:"localPingThresholdMs,omitempty" bson:"localPingThresholdMs,omitempty"`
 	OplogSizeMB               int    `yaml:"oplogSizeMb,omitempty" json:"oplogSizeMb,omitempty" bson:"oplogSizeMb,omitempty"`
-	ReplSetName               string `yaml:"replSetName,omitempty" json:"replSetName,omitempty" bson:"replSet,omitempty"`
+	ReplSetName               string `yaml:"replSetName,omitempty" json:"replSetName,omitempty" bson:"replSetName,omitempty"`
 	SecondaryIndexPrefetch    string `yaml:"secondaryIndexPrefetch,omitempty" json:"secondaryIndexPrefetch,omitempty" bson:"secondaryIndexPrefetch,omitempty"`
 }
 
