@@ -13,16 +13,17 @@ import (
 
 var testLoadUri = "https://raw.githubusercontent.com/timvaillancourt/go-mongodb-config/master/config/mongod.conf"
 
-func testConfigFile() string {
+func testConfigFile(t *testing.T) string {
 	_, filename, _, ok := runtime.Caller(0)
-	if ok {
-		return filepath.Join(filepath.Dir(filename), "mongod.conf")
+	if ok && filename != "" {
+		return filepath.Join(filepath.Dir(filename), "test", "mongod.conf")
 	}
+	assert.FailNow(t, "Could not find path to go file")
 	return ""
 }
 
 func loadConfig(t *testing.T) *Config {
-	bytes, err := ioutil.ReadFile(testConfigFile())
+	bytes, err := ioutil.ReadFile(testConfigFile(t))
 	if err != nil {
 		assert.FailNow(t, err.Error())
 	}
@@ -58,7 +59,7 @@ func TestLoadConfig(t *testing.T) {
 	_, err := Load("/does/not/exist")
 	assert.Error(t, err, "config.Load() should return an error for paths that do not exist")
 
-	config, err := Load(testConfigFile())
+	config, err := Load(testConfigFile(t))
 	assert.NoError(t, err, "Error running config.Load()")
 	compareConfig := loadConfig(t)
 	assert.Equal(t, compareConfig, config, "Test and config.Load() output differ")
