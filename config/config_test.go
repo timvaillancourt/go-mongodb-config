@@ -11,7 +11,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-var testLoadUri = "https://raw.githubusercontent.com/timvaillancourt/go-mongodb-config/master/config/mongod.conf"
+var testLoadUri = "https://raw.githubusercontent.com/timvaillancourt/go-mongodb-config/master/config/test/mongod.conf"
 
 func testConfigFile(t *testing.T) string {
 	_, filename, _, ok := runtime.Caller(0)
