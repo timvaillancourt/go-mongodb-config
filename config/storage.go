@@ -43,10 +43,10 @@ type StorageMMAPv1 struct {
 }
 
 type StorageWiredTigerEngineConfig struct {
-	CacheSizeGB            int    `yaml:"cacheSizeGB,omitempty" json:"cacheSizeGB,omitempty" json:"cacheSizeGB,omitempty"`
-	DirectoryForIndexes    bool   `yaml:"directoryForIndexes,omitempty" json:"directoryForIndexes,omitempty"`
-	JournalCompressor      string `yaml:"journalCompressor,omitempty" json:"journalCompressor,omitempty"`
-	StatisticsLogDelaySecs int    `yaml:"statisticsLogDelaySecs,omitempty" json:"statisticsLogDelaySecs,omitempty"`
+	CacheSizeGB            float64 `yaml:"cacheSizeGB,omitempty" json:"cacheSizeGB,omitempty" json:"cacheSizeGB,omitempty"`
+	DirectoryForIndexes    bool    `yaml:"directoryForIndexes,omitempty" json:"directoryForIndexes,omitempty"`
+	JournalCompressor      string  `yaml:"journalCompressor,omitempty" json:"journalCompressor,omitempty"`
+	StatisticsLogDelaySecs int     `yaml:"statisticsLogDelaySecs,omitempty" json:"statisticsLogDelaySecs,omitempty"`
 }
 
 type StorageWiredTigerCollectionConfig struct {
